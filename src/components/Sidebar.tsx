@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.png'; 
+
 
 type SidebarProps = {
-  profileImage: string;
+  profileImage: string; 
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ profileImage }) => {
@@ -25,6 +26,7 @@ const Sidebar: React.FC<SidebarProps> = ({ profileImage }) => {
           alt="Perfil" 
           className="rounded-full w-24 h-24" 
         />
+        <h3>Milena Hamerski</h3>
       </div>
 
       {/* Menu */}
@@ -33,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ profileImage }) => {
           <li>
             <Link 
               to="/add-book" 
-              className="block w-full p-2 text-center hover:bg-sage rounded"
+              className="block w-full p-2 text-center bg-blue hover:bg-sage rounded"
             >
               Adicionar Livro
             </Link>

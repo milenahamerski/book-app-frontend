@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getBooks } from "../services/api";
+import BookCard from "./BookCard";
 
 type Book = {
   id: number;
@@ -8,24 +9,29 @@ type Book = {
   year: number;
   imageUrl: string;
   rating: number;
+  readingStatusId: number;
 };
 
 const BookList: React.FC = () => {
   const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    getBooks().then((res) => setBooks(res.data));
+    getBooks().then((res) => setBooks(res));
   }, []);
 
   return (
-    <div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       {books.map((book) => (
-        <div key={book.id}>
-          <h3>{book.title}</h3>
-          <p>{book.author} ({book.year})</p>
-          <img src={book.imageUrl} alt={book.title} width={100} />
-          <p>Rating: {book.rating}⭐</p>
-        </div>
+        <BookCard
+          key={book.id}
+          id={book.id}
+          title={book.title}
+          author={book.author}
+          year={book.year}
+          imageUrl={book.imageUrl} 
+          rating={book.rating}
+          readingStatusId={book.readingStatusId} 
+        />
       ))}
     </div>
   );
